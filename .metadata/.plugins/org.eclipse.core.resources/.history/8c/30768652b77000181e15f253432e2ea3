@@ -1,0 +1,55 @@
+package kugui.owd.privateMessenger.stage;
+
+import java.io.IOException;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class BaseStage{
+	
+	private final String EXT_FXML = ".fxml";
+	
+	private String FXMLName;
+	private String Title;
+	
+	/**
+	 * コンストラクタ
+	 *   ・参照するFXMLファイル名にクラス名を設定。
+	 */
+	public BaseStage() {
+		FXMLName = getClass().getName();
+		Title = "Stage Titile";
+		
+		return;
+	}
+	
+	public Stage getStage() {
+		Parent parent;
+		Scene scene;
+		Stage ret = new Stage();
+		
+		try {
+			
+			parent = FXMLLoader.load( getClass().getResource(FXMLName + EXT_FXML ) );
+			scene = new Scene(parent);
+			
+			/**
+			 * Stageの内容を設定する
+			 */
+			
+			ret.setScene(scene);
+			ret.setTitle(Title);
+			
+		}catch(IOException ioe) {
+			
+			ioe.printStackTrace();
+			
+		}
+		
+		return ret;
+	}
+}
+

@@ -1,0 +1,12 @@
+package kugui.owd.privateMessenger.stage;
+
+public class SendMessageStage extends BaseStage{
+	
+	public SendMessageStage() {
+		Title = "Sending Message";
+		
+		System.out.println(FXMLName + EXT_FXML);
+		
+		return;
+	}
+}

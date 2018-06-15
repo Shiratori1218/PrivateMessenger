@@ -1,0 +1,32 @@
+package kugui.owd.privateMessenger;
+
+import java.io.IOException;
+import java.net.*;
+
+import javax.xml.soap.SAAJResult;
+
+public class RxThread extends Thread{
+	
+	public void run() {
+		
+		int port = 8080; // test用。
+		ServerSocket sSocket;
+		
+		try {
+			
+			sSocket = new ServerSocket(port);
+			sSocket.accept();
+			
+			
+		}catch(IOException ioE) {
+			
+			ioE.printStackTrace();
+			
+		}
+		
+		
+		
+		return;
+	}
+	
+}

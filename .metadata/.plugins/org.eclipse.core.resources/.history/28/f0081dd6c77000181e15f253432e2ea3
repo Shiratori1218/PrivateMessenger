@@ -1,0 +1,104 @@
+package kugui.owd.privateMessenger;
+
+import java.io.*;
+import java.net.*;
+
+import javafx.application.Platform;
+import javafx.stage.Stage;
+import kugui.owd.privateMessenger.stage.ReceivedMessageStage;
+import kugui.owd.privateMessenger.stage.ReceivedMessageStageController;
+
+
+public class RxThread extends Thread{
+
+	public void run() {
+
+		int port = 80; // test用。
+		int timeout = 1000;
+		ServerSocket sSocket = null;
+
+		try {
+
+			sSocket = new ServerSocket(port);
+			sSocket.setSoTimeout(timeout);
+
+			System.out.println(String.format("start listening port　%d", port));
+
+			while (true) {
+
+				try {
+					int length = 0;
+
+					DataInputStream dis = new DataInputStream(sSocket.accept().getInputStream());
+
+					System.out.println(
+							String.format("IP %s port %d : socket accept", sSocket.getInetAddress().toString(), port));
+
+					while (true) {
+
+						byte[] buffer = new byte[1024];
+						length = dis.read(buffer);
+
+						if (length > 0) {
+
+//							System.out.print(new String(buffer));
+
+						} else {
+							break;
+						}
+
+						try {
+							Thread.sleep(500);
+						} catch (InterruptedException ire) {
+							/* nop */
+						}
+
+					}
+
+					dis.close();
+					
+					Booker booker = new Booker(new ReceivedMessageStage());
+					ReceivedMessageStageController rmsc = (ReceivedMessageStageController)booker.getController();
+//					rmsc.setMessageWindow("Test");
+					System.out.println(rmsc.toString());
+					Platform.runLater(booker);
+					
+				} catch (SocketTimeoutException se) {
+
+					if (interrupted() == true) {
+
+						break;
+
+					} else {
+
+						/* no operation */
+
+					}
+				}
+			}
+
+		} catch (IOException ioE) {
+
+			ioE.printStackTrace();
+
+		} finally {
+			if (sSocket != null) {
+				try {
+					sSocket.close();
+				} catch (IOException ioe) {
+
+					ioe.printStackTrace();
+
+				}
+			} else {
+				/* no operation */
+			}
+
+		}
+
+		System.out.println("finished");
+
+		return;
+	}
+
+}

@@ -1,0 +1,25 @@
+package kugui.owd.privateMessenger;
+
+import javafx.application.Application;
+
+import kugui.owd.privateMessenger.stage.*;
+
+public class PrivateMessenger
+{
+	public static void main( String[] args) {
+		
+		RxThread rxThread = new RxThread();
+		
+		System.out.println( "Good night World");
+		
+		rxThread.start();
+		Application.launch(MainStage.class, args);
+		
+		
+		rxThread.interrupt();
+		
+		System.out.println( "r u still awake?");
+		
+		return;
+	}
+}

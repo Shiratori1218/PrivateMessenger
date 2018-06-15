@@ -1,0 +1,27 @@
+package kugui.owd.privateMessenger;
+
+import java.io.*;
+import java.net.*;
+
+public class TxThread extends Thread {
+	
+	private String targetIP;
+	
+	
+	public void run() {
+		
+		int port = 80;
+		
+		
+		
+		
+		
+		return;
+	}
+	
+	public void setTargetIP(String pIP) {
+		targetIP = pIP;
+		return;
+	}
+	
+}

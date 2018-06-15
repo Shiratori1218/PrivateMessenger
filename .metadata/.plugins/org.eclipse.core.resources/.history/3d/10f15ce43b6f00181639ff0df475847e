@@ -1,0 +1,56 @@
+package kugui.owd.privateMessenger;
+
+import java.io.*;
+import java.net.*;
+
+public class RxThread extends Thread {
+
+	public void run() {
+
+		int port = 80; // test用。
+		int timeout = 1000;
+		ServerSocket sSocket;
+
+		try {
+
+			sSocket = new ServerSocket(port);
+			sSocket.setSoTimeout(timeout);
+			
+			System.out.println(String.format("start listening port　%d", port));
+
+			while (true) {
+
+				try {
+
+					
+					DataInputStream dis = new DataInputStream(sSocket.accept().getInputStream());
+					
+					System.out.println(String.format("port %d : socket accept", port));
+					System.out.println(dis.readUTF());
+
+				} catch (SocketTimeoutException se) {
+
+					if (interrupted() == true) {
+
+						break;
+
+					} else {
+
+						/* no operation */
+
+					}
+				}
+			}
+
+		} catch (IOException ioE) {
+
+			ioE.printStackTrace();
+
+		}
+
+		System.out.println("finished");
+
+		return;
+	}
+
+}

@@ -1,0 +1,27 @@
+package kugui.owd.privateMessenger;
+
+import java.lang.Thread;
+
+
+
+public class RxThread extends Thread{
+	
+	public void run() {
+		
+		int countPray = 0;
+		
+		try {
+			while(true) {
+				Thread.sleep(10000);
+				
+				
+				System.out.println(String.format("%d : please let me see the good dream...", countPray));
+				
+				countPray++;
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+}

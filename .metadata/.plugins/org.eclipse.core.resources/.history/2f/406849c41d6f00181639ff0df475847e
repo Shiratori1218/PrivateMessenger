@@ -1,0 +1,16 @@
+package kugui.owd.privateMessenger;
+
+import java.lang.Thread;
+
+
+
+public class RxThread extends Thread{
+	
+	public void run() {
+		
+		System.out.println("please let me see the good dream...");
+		
+		return;
+	}
+	
+}

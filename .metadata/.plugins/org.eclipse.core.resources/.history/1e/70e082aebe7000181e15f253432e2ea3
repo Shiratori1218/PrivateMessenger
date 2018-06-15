@@ -1,0 +1,30 @@
+package kugui.owd.privateMessenger;
+
+import javafx.stage.Stage;
+import kugui.owd.privateMessenger.stage.BaseStage;
+
+public class booker extends Thread {
+	
+	private BaseStage baseStage;
+	
+	public void run() {
+		baseStage.getStage().show();
+		
+		return;
+	}
+	
+	
+	public booker( BaseStage pBS ) {
+		setStage(pBS);
+		return;
+	}
+	
+	
+	public void setStage(BaseStage pBS) {
+		baseStage = pBS;
+		return;
+	}
+	
+	
+	
+}

@@ -1,0 +1,26 @@
+package kugui.owd.privateMessenger.stage;
+
+import javafx.stage.Stage;
+
+public abstract class BaseStage{
+	
+	private String FXMLName;
+	private String Title;
+	
+	/**
+	 * コンストラクタ
+	 *   ・参照するFXMLファイル名にクラス名を設定。
+	 */
+	public BaseStage() {
+		FXMLName = getClass().getName();
+		
+		return;
+	}
+	
+	abstract Stage getStage();
+	
+	
+	
+	
+}
+

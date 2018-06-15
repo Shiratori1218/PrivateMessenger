@@ -1,0 +1,47 @@
+package kugui.owd.privateMessenger;
+
+import java.io.*;
+import java.net.*;
+
+public class TxThread extends Thread {
+	
+	private String targetIP;
+	
+	
+	public void run() {
+		
+		int port = 80;
+		int timeout = 10000;
+		
+		Socket clientSocket = new Socket();
+		
+		try {
+			
+			clientSocket.connect(new InetSocketAddress(targetIP, port), timeout);
+			
+			DataOutputStream dos = new DataOutputStream(clientSocket.getOutputStream());
+			dos.writeUTF("TestMessage");
+			
+		}catch(IOException ie) {
+			
+			ie.printStackTrace();
+			
+		}
+		
+		
+		if( clientSocket != null ) {
+			
+			clientSocket.close();
+			
+		}
+		
+		
+		return;
+	}
+	
+	public void setTargetIP(String pIP) {
+		targetIP = pIP;
+		return;
+	}
+	
+}

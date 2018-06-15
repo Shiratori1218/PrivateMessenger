@@ -1,0 +1,15 @@
+package kugui.owd.privateMessenger;
+
+import kugui.owd.privateMessenger.stage.*;
+
+public class Ppa
+{
+	public static void main( String[] args) {
+		System.out.println( "Good night World");
+		
+		MainStage ms = new MainStage();
+			
+		
+		return;
+	}
+}

@@ -1,0 +1,28 @@
+package kugui.owd.privateMessenger.stage;
+
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import kugui.owd.privateMessenger.booker;
+
+public class ReceivedMessageStageController{
+
+	@FXML private TextArea txaMessage;
+	@FXML private TextField txfSentFrom;
+
+	/**
+	 * EventHandler
+	 */
+	
+	@FXML
+	private void btnReply_Click(ActionEvent event) {
+		
+		System.out.println("clicked");
+		Platform.runLater(new Booker(new SendMessageStage()));
+		
+		return;
+	}
+	
+}

@@ -1,0 +1,38 @@
+package kugui.owd.privateMessenger;
+
+import java.io.IOException;
+import java.net.*;
+
+public class RxThread extends Thread {
+
+	public void run() {
+
+		int port = 80; // test用。
+		ServerSocket sSocket;
+
+		try {
+
+			sSocket = new ServerSocket(port);
+
+			while (true) {
+
+				sSocket.accept();
+				System.out.println(String.format("port %d : socket accept", port));
+
+			}
+
+		} catch (IOException ioE) {
+
+			ioE.printStackTrace();
+			
+		} catch (InterruptedException ie) {
+
+			System.out.println(String.format("interrupted", port));
+		}
+
+		System.out.println("finished");
+
+		return;
+	}
+
+}
